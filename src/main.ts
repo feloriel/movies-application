@@ -10,7 +10,7 @@ new Vue({
   router,
   store,
   vuetify,
-  created() {
+  mounted() {
     this.$store.dispatch("loadMovies");
   },
   render: h => h(App)
