@@ -24,3 +24,14 @@ export const genreType = {
   sport: "sport" as GenreType,
   thriller: "thriller" as GenreType
 };
+
+export interface MovieModel {
+  id: number;
+  key: string;
+  name: string;
+  description: string;
+  genres: Array<GenreType>;
+  rate: string;
+  length: string;
+  img: string;
+}

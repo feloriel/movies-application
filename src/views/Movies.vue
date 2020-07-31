@@ -11,5 +11,5 @@ import MoviesList from "@/components/MoviesList.vue";
     MoviesList
   }
 })
-export default class Home extends Vue {}
+export default class Movies extends Vue {}
 </script>
