@@ -1,7 +1,7 @@
 <template>
   <router-link :to="moviePath">
     <v-card>
-      <v-img :src="moviePosterImagePath" :alt="movie.name"></v-img>
+      <v-img :src="getMovieImagePath" :alt="movie.name"></v-img>
       <v-card-title class="text-body-1 break-word">
         {{ movie.name }}
       </v-card-title>
@@ -16,12 +16,13 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { MovieModel } from "@/models/movie.model";
+import { getMovieImagePath } from "@/helpers";
 
 @Component
 export default class MoviesList extends Vue {
   @Prop() private movie!: MovieModel;
-  get moviePosterImagePath() {
-    return `images/movie-covers/${this.movie.img}`;
+  get getMovieImagePath() {
+    return getMovieImagePath(this.movie.img);
   }
   get moviePath() {
     return `/movie/${this.movie.key}`;
@@ -32,5 +33,9 @@ export default class MoviesList extends Vue {
 <style scoped lang="scss">
 .break-word {
   word-break: break-word;
+}
+
+.v-application a {
+  text-decoration: none;
 }
 </style>
