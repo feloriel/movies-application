@@ -8,14 +8,26 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     movies: [],
-    currentMovie: null
+    currentMovie: null,
+    filteredMovieByName: ""
   } as MovieState,
   mutations: {
     setMovies(state, movies) {
       state.movies = movies;
     },
     setCurrentMovie(state, key) {
-      state.currentMovie = state.movies.filter(movie => movie.key === key)[0];
+      state.currentMovie =
+        state.movies.find(movie => movie.key === key) ?? null;
+    },
+    setFilteredMovieByName(state, name) {
+      state.filteredMovieByName = name ?? "";
+    }
+  },
+  getters: {
+    filteredMovies: state => {
+      return state.movies.filter(movie =>
+        movie.name.includes(state.filteredMovieByName)
+      );
     }
   },
   actions: {

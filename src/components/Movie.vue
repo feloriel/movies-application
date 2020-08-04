@@ -19,7 +19,7 @@ import { MovieModel } from "@/models/movie.model";
 import { getMovieImagePath } from "@/helpers";
 
 @Component
-export default class MoviesList extends Vue {
+export default class Movie extends Vue {
   @Prop() private movie!: MovieModel;
   get getMovieImagePath() {
     return getMovieImagePath(this.movie.img);
