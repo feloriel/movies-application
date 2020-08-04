@@ -2,10 +2,11 @@
   <v-text-field
     hide-details
     clearable
-    :value="filteredMovieByName"
+    :value="selectedTitle"
     @input="handleChange"
-    label="Search"
+    label="Search by title"
     prepend-inner-icon="mdi-magnify"
+    autocomplete="off"
   ></v-text-field>
 </template>
 
@@ -14,14 +15,17 @@ import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class MoviesListSearch extends Vue {
-  get filteredMovieByName() {
-    return this.$store.state.filteredMovieByName;
+  get selectedTitle() {
+    return this.$store.state.selectedTitle;
   }
   handleChange(value: string) {
-    this.setFilteredMovieByName(value);
+    this.setSelectedTitle(value);
   }
-  setFilteredMovieByName(name: string) {
-    this.$store.commit("setFilteredMovieByName", name);
+  setSelectedTitle(name: string) {
+    if (this.$store.state.selectedGenre) {
+      this.$store.commit("clearSelectedGenre");
+    }
+    this.$store.commit("setSelectedTitle", name);
   }
 }
 </script>

@@ -1,7 +1,8 @@
-import { MovieModel } from "@/models/movie.model";
+import { MovieModel, GenreType } from "@/models/movie.model";
 
 export interface MovieState {
   movies: Array<MovieModel>;
   currentMovie: MovieModel | null;
-  filteredMovieByName: string;
+  selectedTitle: string;
+  selectedGenre: GenreType | "";
 }
