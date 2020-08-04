@@ -51,19 +51,17 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    loadMovies({ commit }) {
-      axios
-        .get("./movie-data.json", {
+    async loadMovies({ commit }) {
+      try {
+        const response = await axios.get("./movie-data.json", {
           headers: {
             "Content-Type": "application/json"
           }
-        })
-        .then(response => {
-          commit("setMovies", response.data);
-        })
-        .catch(error => {
-          //TODO
         });
+        commit("setMovies", response.data);
+      } catch (error) {
+        throw new Error(`Error while getting movies from API ${error}`);
+      }
     }
   },
   modules: {}
