@@ -23,7 +23,9 @@
             </v-col>
             <v-col md="10" cols="12">
               <span v-for="genre in currentMovie.genres" :key="genre.id">
-                <v-chip class="mr-2" color="primary">{{ genre }}</v-chip>
+                <v-chip class="mr-2" color="primary" @click="handleClick">{{
+                  genre
+                }}</v-chip>
               </span>
             </v-col>
           </v-row>
@@ -51,6 +53,13 @@ export default class MovieDetail extends Vue {
   @Prop() private currentMovie!: MovieModel;
   get getMovieImagePath() {
     return getMovieImagePath(this.currentMovie.img);
+  }
+  handleClick(event: Event) {
+    this.setSelectedGenre((event.target as HTMLElement).textContent);
+    this.$router.push({ path: "/" });
+  }
+  setSelectedGenre(genre: string | null) {
+    this.$store.commit("setSelectedGenre", genre);
   }
 }
 </script>
