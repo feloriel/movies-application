@@ -1,7 +1,13 @@
 <template>
   <router-link :to="moviePath">
     <v-card>
-      <v-img :src="getMovieImagePath" :alt="movie.name"></v-img>
+      <v-img
+        :src="getMovieImagePath"
+        :alt="movie.name"
+        :aspect-ratio="3 / 4"
+        lazy-src="images/placeholder.jpg"
+      >
+      </v-img>
       <v-card-title class="text-body-1 break-word">
         {{ movie.name }}
       </v-card-title>
