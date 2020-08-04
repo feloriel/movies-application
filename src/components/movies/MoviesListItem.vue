@@ -1,6 +1,6 @@
 <template>
   <router-link :to="moviePath">
-    <v-card>
+    <v-card class="fill-height">
       <v-img
         :src="getMovieImagePath"
         :alt="movie.name"
