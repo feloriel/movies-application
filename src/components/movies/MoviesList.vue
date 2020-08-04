@@ -3,7 +3,7 @@
     <v-container class="pa-0">
       <v-row>
         <v-col>
-          <Search />
+          <MoviesListSearch />
         </v-col>
       </v-row>
       <v-row>
@@ -15,7 +15,7 @@
           sm="4"
           cols="6"
         >
-          <Movie :movie="movie" />
+          <MoviesListItem :movie="movie" />
         </v-col>
       </v-row>
     </v-container>
@@ -24,13 +24,13 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Search from "@/components/Search.vue";
-import Movie from "@/components/Movie.vue";
+import MoviesListSearch from "@/components/movies/MoviesListSearch.vue";
+import MoviesListItem from "@/components/movies/MoviesListItem.vue";
 
 @Component({
   components: {
-    Search,
-    Movie
+    MoviesListSearch,
+    MoviesListItem
   }
 })
 export default class MoviesList extends Vue {

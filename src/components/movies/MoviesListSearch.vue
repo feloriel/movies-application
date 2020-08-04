@@ -13,7 +13,7 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component
-export default class Search extends Vue {
+export default class MoviesListSearch extends Vue {
   get filteredMovieByName() {
     return this.$store.state.filteredMovieByName;
   }
