@@ -2,7 +2,7 @@
   <v-app id="app">
     <Header appName="Movies Application" />
     <v-main>
-      <v-container fluid>
+      <v-container>
         <transition name="fade" mode="out-in">
           <router-view />
         </transition>

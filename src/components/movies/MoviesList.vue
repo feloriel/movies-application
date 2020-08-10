@@ -1,27 +1,25 @@
 <template>
   <v-item-group>
-    <v-container class="pa-0">
-      <v-row>
-        <v-col>
-          <MoviesListFilter />
-        </v-col>
-        <v-col>
-          <MoviesListSearch />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col
-          v-for="movie in movies"
-          :key="movie.key"
-          lg="2"
-          md="3"
-          sm="4"
-          cols="6"
-        >
-          <MoviesListItem :movie="movie" />
-        </v-col>
-      </v-row>
-    </v-container>
+    <v-row>
+      <v-col>
+        <MoviesListFilter />
+      </v-col>
+      <v-col>
+        <MoviesListSearch />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col
+        v-for="movie in movies"
+        :key="movie.key"
+        lg="2"
+        md="3"
+        sm="4"
+        cols="6"
+      >
+        <MoviesListItem :movie="movie" />
+      </v-col>
+    </v-row>
   </v-item-group>
 </template>
 

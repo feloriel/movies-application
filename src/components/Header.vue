@@ -1,8 +1,14 @@
 <template>
-  <v-app-bar app color="primary" dark>
-    <router-link to="/">
-      <span class="title ml-3 mr-5">{{ appName }}</span>
-    </router-link>
+  <v-app-bar app flat color="primary">
+    <v-container class="pa-0 d-flex align-center">
+      <v-btn text @click="handleClick" dark>
+        {{ appName }}
+      </v-btn>
+      <v-spacer></v-spacer>
+      <v-btn icon @click="switchTheme">
+        <v-icon :color="themeIconColor">{{ themeIcon }}</v-icon>
+      </v-btn>
+    </v-container>
   </v-app-bar>
 </template>
 
@@ -11,13 +17,23 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class Header extends Vue {
+  dark = false;
+  get themeIconColor() {
+    return this.dark ? "yellow darken-2" : "white";
+  }
+  get themeIcon() {
+    return this.dark ? "mdi-lightbulb-on" : "mdi-lightbulb-outline";
+  }
   @Prop() private appName!: string;
+
+  handleClick() {
+    this.$router.push({ path: "/" });
+    this.$store.commit("clearSelectedGenre");
+    this.$store.commit("clearSelectedTitle");
+  }
+  switchTheme() {
+    this.dark = !this.dark;
+    this.$vuetify.theme.dark = this.dark;
+  }
 }
 </script>
-
-<style scoped lang="scss">
-.v-application a {
-  color: #ffffff;
-  text-decoration: none;
-}
-</style>

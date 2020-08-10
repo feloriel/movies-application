@@ -1,22 +1,20 @@
 <template>
-  <router-link :to="moviePath">
-    <v-card class="fill-height">
-      <v-img
-        :src="getMovieImagePath"
-        :alt="movie.name"
-        :aspect-ratio="3 / 4"
-        lazy-src="images/placeholder.jpg"
-      >
-      </v-img>
-      <v-card-title class="text-body-1 break-word">
-        {{ movie.name }}
-      </v-card-title>
-      <v-card-subtitle>
-        <v-icon small color="yellow darken-2">mdi-star</v-icon>
-        {{ movie.rate }}
-      </v-card-subtitle>
-    </v-card>
-  </router-link>
+  <v-card class="fill-height" @click="handleClick">
+    <v-img
+      :src="getMovieImagePath"
+      :alt="movie.name"
+      :aspect-ratio="3 / 4"
+      lazy-src="images/placeholder.jpg"
+    >
+    </v-img>
+    <v-card-title class="text-body-1 break-word">
+      {{ movie.name }}
+    </v-card-title>
+    <v-card-subtitle>
+      <v-icon small color="yellow darken-2">mdi-star</v-icon>
+      {{ movie.rate }}
+    </v-card-subtitle>
+  </v-card>
 </template>
 
 <script lang="ts">
@@ -33,15 +31,14 @@ export default class MoviesListItem extends Vue {
   get moviePath() {
     return `/movie/${this.movie.key}`;
   }
+  handleClick() {
+    this.$router.push({ path: this.moviePath });
+  }
 }
 </script>
 
 <style scoped lang="scss">
 .break-word {
   word-break: break-word;
-}
-
-.v-application a {
-  text-decoration: none;
 }
 </style>
