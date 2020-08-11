@@ -1,9 +1,7 @@
 <template>
   <v-app-bar app flat color="primary">
     <v-container class="pa-0 d-flex align-center">
-      <v-btn text @click="handleClick" dark>
-        {{ appName }}
-      </v-btn>
+      <v-btn text @click="handleClick" dark>{{ appName }}</v-btn>
       <v-spacer></v-spacer>
       <v-btn icon @click="switchTheme">
         <v-icon :color="themeIconColor">{{ themeIcon }}</v-icon>
@@ -27,7 +25,9 @@ export default class Header extends Vue {
   @Prop() private appName!: string;
 
   handleClick() {
-    this.$router.push({ path: "/" });
+    if (this.$route.name !== "Movies") {
+      this.$router.push({ path: "/" });
+    }
     this.$store.commit("clearSelectedGenre");
     this.$store.commit("clearSelectedTitle");
   }
