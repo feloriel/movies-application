@@ -1,9 +1,11 @@
 <template>
   <v-app-bar app flat color="primary">
     <v-container class="pa-0 d-flex align-center">
-      <v-btn text @click="handleClick" dark>{{ appName }}</v-btn>
+      <v-btn text @click="handleClick" dark :aria-label="appName">{{
+        appName
+      }}</v-btn>
       <v-spacer></v-spacer>
-      <v-btn icon @click="switchTheme">
+      <v-btn icon @click="switchTheme" aria-label="Switch theme">
         <v-icon :color="themeIconColor">{{ themeIcon }}</v-icon>
       </v-btn>
     </v-container>
