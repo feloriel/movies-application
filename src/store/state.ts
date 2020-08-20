@@ -5,4 +5,5 @@ export interface MovieState {
   currentMovie: MovieModel | null;
   selectedTitle: string;
   selectedGenre: GenreType | "";
+  moviesLoaded: boolean;
 }

@@ -18,6 +18,14 @@ const routes: Array<RouteConfig> = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "movie" */ "../views/Movie.vue")
+  },
+  {
+    path: "*",
+    name: "PageNotFound",
+    component: () =>
+      import(
+        /* webpackChunkName: "page-not-found" */ "../views/PageNotFound.vue"
+      )
   }
 ];
 

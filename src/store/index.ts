@@ -11,11 +11,15 @@ export default new Vuex.Store({
     movies: [],
     currentMovie: null,
     selectedTitle: "",
-    selectedGenre: ""
+    selectedGenre: "",
+    moviesLoaded: false
   } as MovieState,
   mutations: {
     setMovies(state, movies) {
       state.movies = movies;
+    },
+    setMoviesLoaded(state) {
+      state.moviesLoaded = true;
     },
     setCurrentMovie(state, key) {
       state.currentMovie =
@@ -59,6 +63,7 @@ export default new Vuex.Store({
           }
         });
         commit("setMovies", response.data);
+        commit("setMoviesLoaded");
       } catch (error) {
         throw new Error(`Error while getting movies from API ${error}`);
       }
